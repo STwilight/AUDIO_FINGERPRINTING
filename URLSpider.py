@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import os.path
-import time
 import datetime
 from grab import Grab
 
@@ -150,12 +149,14 @@ class Parser:
             f.write(str(2*chr(9) + '<h3>Parser test results:</h3>\n'))
             f.write(str(2*chr(9) + '<b>Datetime Stamp:</b> %s, %s:%s:%s<br>\n') % (dtime.date(), dtime.hour, dtime.minute, dtime.second))
             f.write(str(2*chr(9) + '<b>URL:</b>' + ' ' + '<a href="' + self.link + '">' + self.link + '</a><br>\n'))
-            f.write(str(2*chr(9) + '<b>Page title:</b>' + ' ' + g.doc.select('//title').text() + '<br>\n'))
+            #f.write(str(2*chr(9) + '<b>Page title:</b>' + ' ' + g.doc.select('//title').text() + '<br>\n'))
+            f.write(str(2*chr(9) + '<b>Page title:</b>' + ' ' + g.doc.select('//title').text().encode("utf-8") + '<br>\n'))
             f.write(str(2*chr(9) + '<b>File file_format:</b>' + ' ' + '*' + self.file_format + '<br><br>\n'))
             f.write(str(2*chr(9) + '<b>Site links:</b><br>\n'))
             f.write(str(2*chr(9) + '<ol type="1">\n'))
             for i in range(len(links)):
-                f.write(str(3*chr(9) + '<li>' + self.text[i].encode("utf-8") + ': <a href="' + links[i].encode("utf-8") + '">' + links[i].encode("utf-8") + '</a></li>\n'))
+                #f.write(str(3*chr(9) + '<li>' + self.text[i].encode("utf-8") + ': <a href="' + links[i].encode("utf-8") + '">' + links[i].encode("utf-8") + '</a></li>\n'))
+                f.write(str(3*chr(9) + '<li>' + self.text[i] + ': <a href="' + links[i] + '">' + links[i] + '</a></li>\n'))
             f.write(str(2*chr(9) + '</ol><br>\n'))
             f.write(str(2*chr(9) + '<b>Total results count:</b> %s\n' % len(self.strings)))
             f.write(str(chr(9) + '</body>\n'))
@@ -233,11 +234,12 @@ class Get:
                 exit()
 
     def get_file(self):
+        g_get = Grab()
         print ('%s > Downloading file, link: %s...' % (datetime.datetime.now(), self.link))
-        g.go(self.link)
+        g_get.go(self.link)
         print ('%s > Extracting file name...' % datetime.datetime.now())
-        self.filename_extract(g.response.url)
-        # print ('link: ' + g.response.url + ', file: ' + self.filename)
+        self.filename_extract(g_get.response.url)
+        # print ('link: ' + g_get.response.url + ', file: ' + self.filename)
         self.format_check()
         if len(self.save_path) <= 1:
             self.patch = self.save_path + self.filename
@@ -245,7 +247,7 @@ class Get:
             self.patch = self.save_path + '/' + self.filename
         print ('%s > Saving "%s" file on disc...' % (datetime.datetime.now(), self.filename))
         with open('%s' % self.patch, 'wb') as f:
-            f.write(g.response.body)
+            f.write(g_get.response.body)
             f.close()
         print ('%s > File "%s" has been saved successfully.' % (datetime.datetime.now(), self.filename))
 
