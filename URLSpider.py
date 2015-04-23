@@ -202,6 +202,7 @@ class Get:
         self.extension = ''
         self.patch = ''
         self.ext_check = False
+        self.ua_count = 0
 
     def var_check_single(self):
         if len(self.link) == 0:
@@ -234,25 +235,6 @@ class Get:
                 exit()
 
     def get_file(self):
-        print ('%s > Downloading file, link: %s...' % (datetime.datetime.now(), self.link))
-        ####g.setup(user_agent='Porn-Parser') ####
-        g.go(self.link)
-        print ('%s > Extracting file name...' % datetime.datetime.now())
-        self.filename_extract(g.response.url)
-        # print ('link: ' + g.response.url + ', file: ' + self.filename)
-        self.format_check()
-        if len(self.save_path) <= 1:
-            self.patch = self.save_path + self.filename
-        else:
-            self.patch = self.save_path + '/' + self.filename
-        print ('%s > Saving "%s" file on disc...' % (datetime.datetime.now(), self.filename))
-        with open('%s' % self.patch, 'wb') as f:
-            f.write(g.response.body)
-            f.close()
-        print ('%s > File "%s" has been saved successfully.' % (datetime.datetime.now(), self.filename))
-
-    '''
-    def get_file(self):
         g_get = Grab()
         print ('%s > Downloading file, link: %s...' % (datetime.datetime.now(), self.link))
         g_get.go(self.link)
@@ -269,7 +251,7 @@ class Get:
             f.write(g_get.response.body)
             f.close()
         print ('%s > File "%s" has been saved successfully.' % (datetime.datetime.now(), self.filename))
-    '''
+        del g_get
 
     def get_single(self, link, file_format, save_patch, ext_check):
         self.link = link
@@ -284,7 +266,6 @@ class Get:
         self.save_path = save_patch
         self.ext_check = ext_check
         self.var_check_list()
-        #######
         for i in range(len(links)):
             self.link = links[i]
             self.get_file()
