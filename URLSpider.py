@@ -11,7 +11,9 @@ from dejavu.recognize import FileRecognizer
 
 g = Grab()
 links = []
-table = []
+real_links = []
+names = []
+recognized = []
 
 
 def page_check():
@@ -206,6 +208,7 @@ class Load_URLS:
 class Get:
     def __init__(self):
         self.link = ''
+        self.temp_link = ''
         self.file_format = ''
         self.save_path = ''
         self.filename = ''
@@ -233,9 +236,12 @@ class Get:
 
     def filename_extract(self, link):
         if link.rfind(self.file_format) != -1:
+            self.temp_link = link
+            real_links.append(self.temp_link)
             self.filename = link[(link.rfind('/') + 1):]
             self.filename = self.filename.replace('%20', ' ')
             self.filename = self.filename.replace('%26', ' ')
+            names.append(self.filename)
             self.name = self.filename[:self.filename.rfind('.')]
             self.extension = self.filename[self.filename.rfind('.'):]
 
@@ -305,7 +311,7 @@ class Recognizer:
         self.file_format = file_format
         self.var_check()
         warnings.filterwarnings('ignore')
-        with open('dejavu.cnf.SAMPLE') as f:
+        with open('dejavu.conf') as f:
             config = json.load(f)
         djv = Dejavu(config)
 
@@ -326,4 +332,58 @@ class Recognizer:
 
 class Generate_Report:
     def __init__(self):
-        self.samples_patch = ''
+        self.patch = ''
+        self.res_url = ''
+
+    def var_check(self):
+        if len(self.patch) == 0:
+            print ('%s > WARNING: Patch for generating *.html report is not defined in "generate_report" module!' % datetime.datetime.now())
+            exit()
+        elif len(self.res_url) == 0:
+            print ('%s > WARNING: Resource URL for generating *.html report is not defined in "generate_report" module!' % datetime.datetime.now())
+            exit()
+
+    def gen_html_report(self, patch, res_url):
+        self.patch = patch
+        self.res_url = res_url
+        self.var_check()
+        html_page = '<!DOCTYPE html>\n'
+        dtime = datetime.datetime.now()
+        print ('%s > Generating *.html-file...' % datetime.datetime.now())
+        html_page += '<html>\n'
+        html_page += chr(9) + '<head>\n'
+        html_page += 2*chr(9) + '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">\n'
+        html_page += 2*chr(9) + '<title>Результаты анализа</title>\n'
+        html_page += chr(9) + '</head>\n'
+        html_page += chr(9) + '<body>\n'
+        html_page += 2*chr(9) + '<h3>Результаты анализа:</h3>\n'
+        html_page += 2*chr(9) + '<b>Дата и время:</b> %s, %s:%s:%s<br>\n' % (dtime.date(), dtime.hour, dtime.minute, dtime.second)
+        html_page += 2*chr(9) + '<b>URL ссылка:</b> <a href="%s" target="_blank">%s</a><br>\n' % (res_url, res_url)
+        html_page += 2*chr(9) + '<b>Заголовок страницы:</b> %s<br>\n' % 'title'
+        html_page += 2*chr(9) + '<b>Формат файла:</b> *%s<br>\n' % 'format'
+        html_page += 2*chr(9) + '<b>Совпадений:</b> %s из %s<br><br>\n' % (0, 0)
+        html_page += 2*chr(9) + '<b>Результаты:</b><br><br>\n'
+        html_page += 3*chr(9) + '<table cols="5" border="1" cellspacing="0" cellpadding="5" align="left">\n'
+        html_page += 4*chr(9) + '<tr>\n'
+        html_page += 5*chr(9) + '<td align="center"><b>№</b></td>\n'
+        html_page += 5*chr(9) + '<td align="center"><b>Ссылка</b></td>\n'
+        html_page += 5*chr(9) + '<td align="center"><b>Фактическая ссылка</b></td>\n'
+        html_page += 5*chr(9) + '<td align="center"><b>Имя файла</b></td>\n'
+        html_page += 5*chr(9) + '<td align="center"><b>Совпадение</b></td>\n'
+        html_page += 4*chr(9) + '</tr>\n'
+        for i in range(len(links)):
+            html_page += 4*chr(9) + '<tr>\n'
+            html_page += 5*chr(9) + '<td align="center">%s</td>\n' % str(i+1)
+            link = links[i]
+            html_page += 5*chr(9) + '<td align="left"><a href="%s" target="_blank">%s</a></td>\n' % (link, link)
+            link = real_links[i]
+            html_page += 5*chr(9) + '<td align="left"><a href="%s" target="_blank">%s</a></td>\n' % (link, link)
+            html_page += 5*chr(9) + '<td align="left">%s</td>\n' % names[i]
+            html_page += 5*chr(9) + '<td align="left">%s</td>\n' % 'songname'
+            html_page += 4*chr(9) + '</tr>\n'
+        html_page += 3*chr(9) + '</table>\n'
+        html_page += chr(9) + '</body>\n'
+        html_page += '</html>'
+        f = open(self.patch, 'w')
+        f.write(str(html_page))
+        f.close()

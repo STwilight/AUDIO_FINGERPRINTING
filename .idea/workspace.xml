@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d08b0ef9-de5a-45b4-a84f-458eb78f5647" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/whois/_1_query.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/whois/_2_parse.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/whois/_3_adjust.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/whois/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/whois/tld_regexpr.py" afterPath="" />
+    <list default="true" id="d08b0ef9-de5a-45b4-a84f-458eb78f5647" name="Default" comment="Trying to integrate HTML-generator into project...">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dejavu.cnf.SAMPLE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/index.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/report.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/test_report.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/URLSpider.py" afterPath="$PROJECT_DIR$/URLSpider.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stuff_testing.py" afterPath="$PROJECT_DIR$/stuff_testing.py" />
@@ -37,8 +36,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38523275" vertical-offset="0" max-vertical-offset="623">
-              <caret line="16" column="61" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.6369427" vertical-offset="0" max-vertical-offset="471">
+              <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
               <folding>
                 <element signature="e#25#40#0" expanded="true" />
               </folding>
@@ -49,16 +48,16 @@
       <file leaf-file-name="URLSpider.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/URLSpider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="510">
-              <caret line="326" column="22" selection-start-line="326" selection-start-column="22" selection-end-line="326" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="609" max-vertical-offset="1215">
+              <caret line="315" column="28" selection-start-line="315" selection-start-column="28" selection-end-line="315" selection-end-column="28" />
               <folding>
-                <element signature="e#230#1326#0" expanded="false" />
-                <element signature="e#1364#1529#0" expanded="false" />
-                <element signature="e#1550#7033#0" expanded="false" />
-                <element signature="e#7057#7917#0" expanded="false" />
-                <element signature="e#7935#10999#0" expanded="false" />
-                <element signature="e#11024#12860#0" expanded="false" />
-                <element signature="e#12890#12941#0" expanded="false" />
+                <element signature="e#25#36#0" expanded="true" />
+                <element signature="e#262#1358#0" expanded="false" />
+                <element signature="e#1396#1561#0" expanded="false" />
+                <element signature="e#1582#7065#0" expanded="false" />
+                <element signature="e#7089#7949#0" expanded="false" />
+                <element signature="e#7967#11179#0" expanded="false" />
+                <element signature="e#13064#16208#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -67,8 +66,8 @@
       <file leaf-file-name="stuff_testing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stuff_testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -87,16 +86,16 @@
         <option value="$PROJECT_DIR$/markup-1.10/doc/examples.py" />
         <option value="$PROJECT_DIR$/markup-1.10/markup.py" />
         <option value="$PROJECT_DIR$/stuff_testing.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/URLSpider.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
     <option name="y" value="-4" />
-    <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="width" value="1851" />
+    <option name="height" value="932" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -121,7 +120,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -140,36 +138,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AUDIO_FINGERPRINTING" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AUDIO_FINGERPRINTING" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AUDIO_FINGERPRINTING" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AUDIO_FINGERPRINTING" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mp3_downloads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -430,8 +401,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.URLSpider" />
-        <item index="2" class="java.lang.String" itemvalue="Python.stuff_testing" />
+        <item index="1" class="java.lang.String" itemvalue="Python.stuff_testing" />
+        <item index="2" class="java.lang.String" itemvalue="Python.URLSpider" />
         <item index="3" class="java.lang.String" itemvalue="Python.examples" />
         <item index="4" class="java.lang.String" itemvalue="Python.markup" />
       </list>
@@ -442,26 +413,26 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1851" height="932" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988626" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24918212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24972677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38895705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988626" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32883435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -478,9 +449,9 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24972677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32883435" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -514,6 +485,40 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/URLSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="510">
+          <caret line="326" column="22" selection-start-line="326" selection-start-column="22" selection-end-line="326" selection-end-column="22" />
+          <folding>
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stuff_testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1350">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="870">
           <caret line="30" column="34" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="34" />
           <folding>
@@ -527,13 +532,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1280" max-vertical-offset="2220">
           <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="142" selection-end-column="31" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -561,13 +566,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1352" max-vertical-offset="2220">
           <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="142" selection-end-column="31" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -595,13 +600,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="450">
           <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -629,13 +634,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="450">
           <caret line="173" column="16" selection-start-line="173" selection-start-column="16" selection-end-line="173" selection-end-column="16" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -663,13 +668,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2145">
           <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="187" selection-end-column="30" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -689,13 +694,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2145">
           <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="187" selection-end-column="30" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -715,13 +720,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2145">
           <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="187" selection-end-column="30" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -741,13 +746,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="4050">
           <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -782,32 +787,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stuff_testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/URLSpider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="326" column="22" selection-start-line="326" selection-start-column="22" selection-end-line="326" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="609" max-vertical-offset="1215">
+          <caret line="315" column="28" selection-start-line="315" selection-start-column="28" selection-end-line="315" selection-end-column="28" />
           <folding>
-            <element signature="e#230#1326#0" expanded="false" />
-            <element signature="e#1364#1529#0" expanded="false" />
-            <element signature="e#1550#7033#0" expanded="false" />
-            <element signature="e#7057#7917#0" expanded="false" />
-            <element signature="e#7935#10999#0" expanded="false" />
-            <element signature="e#11024#12860#0" expanded="false" />
-            <element signature="e#12890#12941#0" expanded="false" />
+            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#262#1358#0" expanded="false" />
+            <element signature="e#1396#1561#0" expanded="false" />
+            <element signature="e#1582#7065#0" expanded="false" />
+            <element signature="e#7089#7949#0" expanded="false" />
+            <element signature="e#7967#11179#0" expanded="false" />
+            <element signature="e#13064#16208#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38523275" vertical-offset="0" max-vertical-offset="623">
-          <caret line="16" column="61" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.6369427" vertical-offset="0" max-vertical-offset="471">
+          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
             <element signature="e#25#40#0" expanded="true" />
           </folding>
