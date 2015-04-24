@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 
-import os.path
+import json
+import os
 import datetime
+import warnings
 from grab import Grab
+from dejavu import Dejavu
+from dejavu.recognize import FileRecognizer
 
 
 g = Grab()
 links = []
+table = []
 
 
 def page_check():
@@ -149,13 +154,13 @@ class Parser:
             f.write(str(2*chr(9) + '<h3>Parser test results:</h3>\n'))
             f.write(str(2*chr(9) + '<b>Datetime Stamp:</b> %s, %s:%s:%s<br>\n') % (dtime.date(), dtime.hour, dtime.minute, dtime.second))
             f.write(str(2*chr(9) + '<b>URL:</b>' + ' ' + '<a href="' + self.link + '">' + self.link + '</a><br>\n'))
-            #f.write(str(2*chr(9) + '<b>Page title:</b>' + ' ' + g.doc.select('//title').text() + '<br>\n'))
+            # f.write(str(2*chr(9) + '<b>Page title:</b>' + ' ' + g.doc.select('//title').text() + '<br>\n'))
             f.write(str(2*chr(9) + '<b>Page title:</b>' + ' ' + g.doc.select('//title').text().encode("utf-8") + '<br>\n'))
             f.write(str(2*chr(9) + '<b>File file_format:</b>' + ' ' + '*' + self.file_format + '<br><br>\n'))
             f.write(str(2*chr(9) + '<b>Site links:</b><br>\n'))
             f.write(str(2*chr(9) + '<ol type="1">\n'))
             for i in range(len(links)):
-                #f.write(str(3*chr(9) + '<li>' + self.text[i].encode("utf-8") + ': <a href="' + links[i].encode("utf-8") + '">' + links[i].encode("utf-8") + '</a></li>\n'))
+                # f.write(str(3*chr(9) + '<li>' + self.text[i].encode("utf-8") + ': <a href="' + links[i].encode("utf-8") + '">' + links[i].encode("utf-8") + '</a></li>\n'))
                 f.write(str(3*chr(9) + '<li>' + self.text[i] + ': <a href="' + links[i] + '">' + links[i] + '</a></li>\n'))
             f.write(str(2*chr(9) + '</ol><br>\n'))
             f.write(str(2*chr(9) + '<b>Total results count:</b> %s\n' % len(self.strings)))
@@ -172,24 +177,30 @@ class Parser:
 
 
 class Load_URLS:
-    def load_urls(self, patch, rewrite):
-        if len(patch) == 0:
+    def __init__(self):
+        self.patch = ''
+
+    def var_check(self):
+        if len(self.patch) == 0:
             print ('%s > WARNING: Patch to *.urls file is not defined in "load_urls" module!' % datetime.datetime.now())
             exit()
-        elif not os.path.isfile(patch):
-            print ('%s > WARNING: File "%s" is not exist!' % (datetime.datetime.now(), patch))
+        elif not os.path.isfile(self.patch):
+            print ('%s > WARNING: File "%s" is not exist!' % (datetime.datetime.now(), self.patch))
             exit()
-        else:
-            print ('%s > Loading URLs from "%s" file...' % (datetime.datetime.now(), patch))
-            if rewrite:
-                del links[:]
-            with open(patch, 'r') as f:
-                for line in f:
-                    tmp = line
-                    if '\n' in tmp:
-                        tmp = tmp.replace('\n', '')
-                    links.append(tmp)
-                f.close()
+
+    def load_urls(self, patch, rewrite):
+        self.patch = patch
+        self.var_check()
+        print ('%s > Loading URLs from "%s" file...' % (datetime.datetime.now(), patch))
+        if rewrite:
+            del links[:]
+        with open(patch, 'r') as f:
+            for line in f:
+                tmp = line
+                if '\n' in tmp:
+                    tmp = tmp.replace('\n', '')
+                links.append(tmp)
+            f.close()
 
 
 class Get:
@@ -269,3 +280,50 @@ class Get:
         for i in range(len(links)):
             self.link = links[i]
             self.get_file()
+
+
+class Recognizer:
+    def __init__(self):
+        self.samples_patch = ''
+        self.downloads_patch = ''
+        self.file_format = ''
+
+    def var_check(self):
+        if len(self.samples_patch) == 0:
+            print ('%s > WARNING: Samples folder is not defined in "recognizer" module!' % datetime.datetime.now())
+            exit()
+        elif len(self.downloads_patch) == 0:
+            print ('%s > WARNING: Downloads folder is not defined in "recognizer" module!' % datetime.datetime.now())
+            exit()
+        elif len(self.file_format) == 0:
+            print ('%s > WARNING: File format is not defined in "recognizer" module!' % datetime.datetime.now())
+            exit()
+
+    def recognize(self, samples_patch, downloads_patch, file_format):
+        self.samples_patch = samples_patch
+        self.downloads_patch = downloads_patch
+        self.file_format = file_format
+        self.var_check()
+        warnings.filterwarnings('ignore')
+        with open('dejavu.cnf.SAMPLE') as f:
+            config = json.load(f)
+        djv = Dejavu(config)
+
+        # -= updating audio fingerprint base =-
+        print ('%s > Updating fingerprints...' % datetime.datetime.now())
+        djv.fingerprint_directory(self.samples_patch, [self.file_format])
+
+        # -= recognizing downloaded files =-
+        print ('%s > Recognizing files...' % datetime.datetime.now())
+        files = os.listdir(self.downloads_patch)
+        files = filter(lambda x: x.endswith(self.file_format), files)
+        for i in range(len(files)):
+            print ('%s > Now recognizing: %s' % (datetime.datetime.now(), files[i]))
+            song = djv.recognize(FileRecognizer, self.downloads_patch + '/' + files[i])
+            print ('%s > From file we recognized: %s' % (datetime.datetime.now(), song))
+        print ('%s > Finished!' % datetime.datetime.now())
+
+
+class Generate_Report:
+    def __init__(self):
+        self.samples_patch = ''
