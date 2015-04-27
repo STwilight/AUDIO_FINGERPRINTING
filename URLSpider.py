@@ -321,12 +321,12 @@ class Recognizer:
 
         # -= recognizing downloaded files =-
         print ('%s > Recognizing files...' % datetime.datetime.now())
-        files = os.listdir(self.downloads_patch)
-        files = filter(lambda x: x.endswith(self.file_format), files)
-        for i in range(len(files)):
-            print ('%s > Now recognizing: %s' % (datetime.datetime.now(), files[i]))
-            song = djv.recognize(FileRecognizer, self.downloads_patch + '/' + files[i])
-            print ('%s > From file we recognized: %s' % (datetime.datetime.now(), song))
+        for i in range(len(names)):
+            file = self.downloads_patch + '/' + names[i]
+            print ('%s > Now recognizing: %s' % (datetime.datetime.now(), names[i]))
+            song = djv.recognize(FileRecognizer, file)
+            recognized.append(song)
+            print ('%s > From file we recognized: %s' % (datetime.datetime.now(), recognized[i]))
         print ('%s > Finished!' % datetime.datetime.now())
 
 
@@ -379,7 +379,7 @@ class Generate_Report:
             link = real_links[i]
             html_page += 5*chr(9) + '<td align="left"><a href="%s" target="_blank">%s</a></td>\n' % (link, link)
             html_page += 5*chr(9) + '<td align="left">%s</td>\n' % names[i]
-            html_page += 5*chr(9) + '<td align="left">%s</td>\n' % 'songname'
+            html_page += 5*chr(9) + '<td align="left">%s</td>\n' % recognized[i]
             html_page += 4*chr(9) + '</tr>\n'
         html_page += 3*chr(9) + '</table>\n'
         html_page += chr(9) + '</body>\n'
