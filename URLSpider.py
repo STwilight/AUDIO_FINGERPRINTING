@@ -14,6 +14,7 @@ links = []
 real_links = []
 names = []
 recognized = []
+params = []
 
 
 def page_check():
@@ -99,6 +100,7 @@ class Parser:
                 f.write(g.response.body)
                 f.close()
         page_check()
+        params.append(self.file_format)
         print ('%s > Parsing...' % datetime.datetime.now())
         num = 1
         for elem in g.doc.select('//a'):
@@ -359,9 +361,9 @@ class Generate_Report:
         html_page += 2*chr(9) + '<h3>Результаты анализа:</h3>\n'
         html_page += 2*chr(9) + '<b>Дата и время:</b> %s, %s:%s:%s<br>\n' % (dtime.date(), dtime.hour, dtime.minute, dtime.second)
         html_page += 2*chr(9) + '<b>URL ссылка:</b> <a href="%s" target="_blank">%s</a><br>\n' % (res_url, res_url)
-        html_page += 2*chr(9) + '<b>Заголовок страницы:</b> %s<br>\n' % 'title'
-        html_page += 2*chr(9) + '<b>Формат файла:</b> *%s<br>\n' % 'format'
-        html_page += 2*chr(9) + '<b>Совпадений:</b> %s из %s<br><br>\n' % (0, 0)
+        html_page += 2*chr(9) + '<b>Заголовок страницы:</b> %s<br>\n' % g.doc.select('//title').text().encode("utf-8")
+        html_page += 2*chr(9) + '<b>Формат файла:</b> *%s<br>\n' % params[0]
+        html_page += 2*chr(9) + '<b>Совпадений:</b> %s из %s<br><br>\n' % (len(recognized), len(names))
         html_page += 2*chr(9) + '<b>Результаты:</b><br><br>\n'
         html_page += 3*chr(9) + '<table cols="5" border="1" cellspacing="0" cellpadding="5" align="left">\n'
         html_page += 4*chr(9) + '<tr>\n'
@@ -374,10 +376,8 @@ class Generate_Report:
         for i in range(len(links)):
             html_page += 4*chr(9) + '<tr>\n'
             html_page += 5*chr(9) + '<td align="center">%s</td>\n' % str(i+1)
-            link = links[i]
-            html_page += 5*chr(9) + '<td align="left"><a href="%s" target="_blank">%s</a></td>\n' % (link, link)
-            link = real_links[i]
-            html_page += 5*chr(9) + '<td align="left"><a href="%s" target="_blank">%s</a></td>\n' % (link, link)
+            html_page += 5*chr(9) + '<td align="center"><a href="%s" target="_blank">link</a></td>\n' % links[i]
+            html_page += 5*chr(9) + '<td align="center"><a href="%s" target="_blank">link</a></td>\n' % real_links[i]
             html_page += 5*chr(9) + '<td align="left">%s</td>\n' % names[i]
             html_page += 5*chr(9) + '<td align="left">%s</td>\n' % recognized[i]
             html_page += 4*chr(9) + '</tr>\n'
