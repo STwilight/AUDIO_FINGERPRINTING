@@ -1,37 +1,18 @@
 # -*- coding: utf-8 -*-
 
-lines = 1
-r = 0  # Чтобы было, чем заполнять
-mas = []
+import json
+import warnings
+from dejavu import Dejavu
+from dejavu.recognize import FileRecognizer
 
-'''
-mas.append([])
-mas[0].append('№')
-mas.append([])
-mas[1].append('Ссылка')
-mas.append([])
-mas[2].append('Фактическая ссылка')
-mas.append([])
-mas[3].append('Имя файла')
-mas.append([])
-mas[4].append('Совпадение')
-'''
+warnings.filterwarnings('ignore')
+with open('dejavu.conf') as f:
+    config = json.load(f)
+djv = Dejavu(config)
 
-for i in range(5):
-    mas.append([])
-    for j in range(lines):
-        mas[i].append('str ' + str(r))
-        r += 1
-    print mas
+song = djv.recognize(FileRecognizer, 'mp3_downloads/At Vance - Flight Of The Bumblebee.mp3')
 
-'''
-for i in range(5):
-    for j in range(lines):
-        print('tr = ' + str(j+1) + ', td = ' + str(i+1) + ': '+ mas[i][j])
-'''
-
-# print (mas[1][0])
-
+print (song['song_name'])
 
 """
 # user-agent randomizer

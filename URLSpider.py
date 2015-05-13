@@ -327,7 +327,7 @@ class Recognizer:
             file = self.downloads_patch + '/' + names[i]
             print ('%s > Now recognizing: %s' % (datetime.datetime.now(), names[i]))
             song = djv.recognize(FileRecognizer, file)
-            recognized.append(song)
+            recognized.append(song['song_name'])
             print ('%s > From file we recognized: %s' % (datetime.datetime.now(), recognized[i]))
         print ('%s > Finished!' % datetime.datetime.now())
 
@@ -363,7 +363,7 @@ class Generate_Report:
         html_page += 2*chr(9) + '<b>URL ссылка:</b> <a href="%s" target="_blank">%s</a><br>\n' % (res_url, res_url)
         html_page += 2*chr(9) + '<b>Заголовок страницы:</b> %s<br>\n' % g.doc.select('//title').text().encode("utf-8")
         html_page += 2*chr(9) + '<b>Формат файла:</b> *%s<br>\n' % params[0]
-        html_page += 2*chr(9) + '<b>Совпадений:</b> %s из %s<br><br>\n' % (len(recognized), len(names))
+        # html_page += 2*chr(9) + '<b>Совпадений:</b> %s из %s<br><br>\n' % (len(recognized), len(names))
         html_page += 2*chr(9) + '<b>Результаты:</b><br><br>\n'
         html_page += 3*chr(9) + '<table cols="5" border="1" cellspacing="0" cellpadding="5" align="left">\n'
         html_page += 4*chr(9) + '<tr>\n'
