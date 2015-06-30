@@ -4,10 +4,10 @@ import json
 import os
 import datetime
 import warnings
+import subprocess
 from grab import Grab
 from dejavu import Dejavu
 from dejavu.recognize import FileRecognizer
-
 
 g = Grab()
 links = []
@@ -387,3 +387,33 @@ class Generate_Report:
         f = open(self.patch, 'w')
         f.write(str(html_page))
         f.close()
+
+
+class Screenshot:
+    def __init__(self):
+        self.patch = ''
+        self.res_url = ''
+
+    def var_check(self):
+        if len(self.patch) == 0:
+            print ('%s > WARNING: Patch for generating screenshot is not defined in "screenshot" module!' % datetime.datetime.now())
+            exit()
+        elif len(self.res_url) == 0:
+            print ('%s > WARNING: Resource URL for generating screenshot is not defined in "screenshot" module!' % datetime.datetime.now())
+            exit()
+
+    def get_screenshot(self, patch, res_url):
+        file_patch = self.generate_savepatch(patch, res_url)
+        cmd = 'gnome-web-photo %s %s' % (res_url, file_patch)
+        # os.system(cmd)
+        PIPE = subprocess.PIPE
+        p = subprocess.Popen(cmd, shell = True)
+
+    def generate_savepatch(self, patch, res_url):
+        dtime = datetime.datetime.now()
+        timestamp = '%s_%s.%s.%s' % (dtime.date(), dtime.hour, dtime.minute, dtime.second)
+        scr_site = res_url.replace('http://', '')
+        scr_site = scr_site[:scr_site.find('/')]
+        savepatch = patch + '/' + timestamp + '_' + scr_site + '.png'
+        return savepatch
+
