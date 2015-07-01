@@ -21,4 +21,4 @@ url = 'http://www.ex.ua/48711923'
 # recognize.recognize('mp3_samples', 'mp3_downloads', '.mp3')
 # report.gen_html_report('web/report.html', url)
 
-screenshot.get_screenshot('/home/newtest/AUDIO_FINGERPRINTING/scr', url)
+screenshot.get_screenshot('/home/newtest/AUDIO_FINGERPRINTING/web/scr', url)
