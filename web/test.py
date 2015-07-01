@@ -4,10 +4,9 @@
 import subprocess
 
 url = 'http://google.com'
-patch = '/home/newtest/AUDIO_FINGERPRINTING/web/'
+patch = '/home/newtest/AUDIO_FINGERPRINTING/web/scr/'
 file = 'ololo.png'
-# cmd = 'gnome-web-photo %s %s' % (url, patch+file)
-cmd = 'python pywebshot.py -f %s %s' % (file, url)
+cmd = 'gnome-web-photo %s %s' % (url, patch+file)
 
 status = subprocess.call(cmd, shell=True)
 # status = subprocess.call(['gnome-web-photo', 'http://google.com', 'ololo.png'], shell=True)
