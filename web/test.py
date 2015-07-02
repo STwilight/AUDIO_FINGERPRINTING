@@ -6,19 +6,31 @@ import subprocess
 url = 'http://google.com'
 patch = '/home/newtest/AUDIO_FINGERPRINTING/web/scr/'
 file = 'ololo.png'
-cmd = 'gnome-web-photo %s %s' % (url, patch+file)
 
-status = subprocess.call(cmd, shell=True)
-# status = subprocess.call(['gnome-web-photo', 'http://google.com', 'ololo.png'], shell=True)
-# status = subprocess.check_output(cmd, shell=True)
 
-print 'Content-type: text/html'
-print
-print 'status: %s' % status
+### TEST BLOCK ###
 
-'''
+print 'Content-type: text/html\n'
+
+cmd = 'touch %s' % (patch + 'test.txt')
 try:
-    status = subprocess.check_call(cmd)
+    status = subprocess.check_call(cmd, shell=True)
+    print '<b>status</b> <i>"%s"</i> command: %s<br>' % (cmd, status)
 except Exception, e:
-    print e
-'''
+    print '<b>exception msg</b>: %s<br>' % e
+
+cmd = 'echo "Test string in test file" >%s' % (patch + 'test.txt')
+try:
+    status = subprocess.check_call(cmd, shell=True)
+    print '<b>status</b> <i>"%s"</i> command: %s<br>' % (cmd, status)
+except Exception, e:
+    print '<b>exception msg</b>: %s<br>' % e
+
+### TEST BLOCK ###
+
+cmd = '/usr/bin/gnome-web-photo %s %s' % (url, patch+file)
+try:
+    status = subprocess.check_call(cmd, shell=True)
+    print '<b>status</b> <i>"%s"</i> command: %s<br>' % (cmd, status)
+except Exception, e:
+    print '<b>exception msg</b>: %s<br>' % e
